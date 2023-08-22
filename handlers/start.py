@@ -1,7 +1,7 @@
 import os
 
 from aiogram import Dispatcher
-from aiogram.dispatcher import FSMContext
+from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 from aiogram import types
 
@@ -12,7 +12,7 @@ async def start(message: Message, state: FSMContext):
         await message.answer("Your are lose!")
         await state.reset_state()
         return
-    await state.reset_state()
+    await state.clear()
     kb = [
         [
             types.KeyboardButton(text="Play"),
