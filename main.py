@@ -10,6 +10,7 @@ from filters import IsAdmin
 from handlers.start import register_start
 
 bot = Bot(token=os.environ.get("TOKEN"), parse_mode=types.ParseMode.HTML)
+bot['admins'] = list(map(int, os.environ.get("ADMINS").split()))
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 logging.basicConfig(level=logging.INFO)
