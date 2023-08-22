@@ -8,9 +8,9 @@ from aiogram import types
 from states import *
 
 async def start(message: Message, state: FSMContext):
-    if state.get_state() == Play.running and state.get_data()["step"] < 6:
+    if await state.get_state() == Play.running and await state.get_data()["step"] < 6:
         await message.answer("Your are lose!")
-        await state.reset_state()
+        await state.clear()
         return
     await state.clear()
     kb = [
