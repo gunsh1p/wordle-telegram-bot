@@ -2,12 +2,15 @@ import asyncio
 import logging
 import os
 
+from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher.filters import Command
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.filters import Command
 
 from filters import IsAdmin
 from handlers.start import register_start
+
+load_dotenv()
 
 bot = Bot(token=os.environ.get("TOKEN"), parse_mode=types.ParseMode.HTML)
 bot['admins'] = list(map(int, os.environ.get("ADMINS").split()))
