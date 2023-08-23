@@ -1,3 +1,6 @@
+import os
+import json
+
 import typing
 
 from aiogram.filters import Filter
@@ -11,5 +14,5 @@ class IsAdmin(Filter):
     async def check(self, obj):
         if self.is_admin is None:
             return False
-        admins = obj.bot.get('admins')
+        admins = json.loads(os.environ.get("ADMINS"))
         return (obj.from_user.id in admins) == self.is_admin
