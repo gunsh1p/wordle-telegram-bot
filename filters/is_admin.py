@@ -11,5 +11,5 @@ class IsAdmin(BoundFilter):
     async def check(self, obj):
         if self.is_admin is None:
             return False
-        config = obj.bot.get('config')
-        return (obj.from_user.id in config["admins"]) == self.is_admin
+        admins = obj.bot.get('admins')
+        return (obj.from_user.id in admins) == self.is_admin
