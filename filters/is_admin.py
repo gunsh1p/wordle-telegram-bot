@@ -1,8 +1,8 @@
 import typing
 
-from aiogram.dispatcher.filters import BoundFilter
+from aiogram.filters import Filter
 
-class IsAdmin(BoundFilter):
+class IsAdmin(Filter):
     key = 'is_admin'
 
     def __init__(self, is_admin: typing.Optional[bool] = None):
