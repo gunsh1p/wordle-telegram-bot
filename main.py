@@ -3,7 +3,7 @@ import logging
 import os
 
 from dotenv import load_dotenv
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher, types, enums
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.filters import Command
 
@@ -12,8 +12,7 @@ from handlers.start import register_start
 
 load_dotenv()
 
-bot = Bot(token=os.environ.get("TOKEN"), parse_mode=types.ParseMode.HTML)
-bot['admins'] = list(map(int, os.environ.get("ADMINS").split()))
+bot = Bot(token=os.environ.get("TOKEN"), parse_mode=enums.ParseMode.HTML)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 logging.basicConfig(level=logging.INFO)
