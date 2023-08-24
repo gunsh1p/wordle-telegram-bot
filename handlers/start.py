@@ -24,5 +24,5 @@ async def start(message: Message, state: FSMContext):
     keyboard = ReplyKeyboardMarkup(keyboard=kb)
     await message.answer(f"Hello, {message.from_user.first_name}. It's a wordle game for {'tg_channel_name_will_be_soon'}", reply_markup=keyboard)
 
-def register_router(dp: Dispatcher):
+def register_start(dp: Dispatcher):
     dp.include_router(router)
