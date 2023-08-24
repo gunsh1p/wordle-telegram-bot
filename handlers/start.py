@@ -8,7 +8,9 @@ from states import *
 
 router = Router() 
 
-@router.message(Command("start"))
+@router.message(
+    Command("start")
+)
 async def start(message: Message, state: FSMContext):
     if await state.get_state() == Play.running and await state.get_data()["step"] < 6:
         await message.answer("Your are lose!")
